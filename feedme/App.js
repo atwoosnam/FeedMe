@@ -42,11 +42,7 @@ class ShoppingListItem extends Component {
       rowId: this.props.index,
       sectionId: 1,
     };
-    // <Text style={styles.flatListItem}>{
-    //   String(this.props.item.ingredients[0].amount) + ' '
-    //   + String(this.props.item.ingredients[0].units) + ' '
-    //   + String(this.props.item.ingredients[0].ingredName)
-    // }</Text>
+
     return (
       <Swipeout {...swipeSettings}>
         <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -55,7 +51,7 @@ class ShoppingListItem extends Component {
             <TouchableOpacity
               style={{ flex: 1, flexDirection: 'column', height: 40 }}
               >
-              <Text>{this.props.item.ingredName}</Text>
+              <Text>{this.props.item.description}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -83,7 +79,15 @@ class ShoppingList extends Component {
           var ingreds = data[i].ingredients;
           for (var j = 0; j < ingreds.length; j++) {
             var ingredient = ingreds[j]
-            ingredientList.push(ingredient);
+
+            var description = ''
+            if (ingredient.amount != null) String(ingredient.amount) + ' '
+            if (ingredient.units != null) description += ingredient.units + ' '
+            if (ingredient.adjective != null) description += ingredient.adjective + ' '
+            description += ingredient.ingredName 
+            if (ingredient.notes != null) description += ' ' + ingredient.notes
+            
+            ingredientList.push({"description":description});
           }
         }
         this.setState({
