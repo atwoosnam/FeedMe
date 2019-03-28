@@ -91,9 +91,11 @@ class RecipeList extends Component {
 
   render() {
     return (
-      <View style={{ borderColor: 'transparent' }}>
+      <View style={{ borderColor: 'transparent', borderBottomWidth: 95 }}>
         <View style={styles.headerSection}>
           <Text style={styles.headerText}>Recipes</Text>
+        </View>
+        <View style={{borderBottomColor: 'black',borderBottomWidth: 1,}}>
         </View>
         <FlatList
           data={this.state.data}
@@ -217,6 +219,8 @@ class ShoppingList extends Component {
         <View style={styles.headerSection}>
           <Text style={styles.headerText}>Shopping List</Text>
         </View>
+        <View style={{borderBottomColor: 'black',borderBottomWidth: 1,}}>
+        </View>
         <FlatList
           data={this.state.ingredients}
           keyExtractor={this._keyExtractor}
@@ -282,5 +286,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     padding: 5,
     paddingLeft: 26,
+    borderBottomColor: '#ABB2B9',
+    borderBottomWidth: 1,
   },
 });
