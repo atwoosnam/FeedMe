@@ -7,21 +7,26 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux';
+import Modal from './Modal'
 
 class PlaygroundScreen extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={{ flexDirection: 'row', width:200, justifyContent: 'space-around' }}>
             <TouchableOpacity onPress={() => this.props.increaseCounter()}>
-                <Text style={{ fontSize: 20 }}>Increase</Text>
+                <Text style={{ fontSize: 20 }}>+</Text>
             </TouchableOpacity>
             <Text style={{ fontSize: 20 }}>{this.props.counter}</Text>
             <TouchableOpacity onPress={() => this.props.decreaseCounter()}>
-                <Text style={{ fontSize: 20 }}>Decrease</Text>
+                <Text style={{ fontSize: 20 }}>-</Text>
             </TouchableOpacity>
         </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+          <Text>{this.props.recipes}</Text>
+        </View>
+        <Modal></Modal>
     </View>
     )
   }
@@ -29,7 +34,8 @@ class PlaygroundScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counter: state.counter,
+    recipes: state.recipes
   }
 }
 

@@ -1,8 +1,8 @@
 {
   "name": "feedme",
-  "version": "0.0.0",
-  "description": "No description",
-  "author": null,
+  "version": "0.0.1",
+  "description": "React Native App to schedule meals & generate grocery shopping lists",
+  "author": "Andrew T. Woosnam",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {

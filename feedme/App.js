@@ -19,16 +19,67 @@ import ShoppingListScreen from './components/ShoppingListScreen';
 
 const initialState = {
   counter: 0,
+  recipes: ["Gruel"],
 };
 
 const reducer = (state = initialState, action) => {
+  var newRecipes = []
+  var i=0;
   switch (action.type) {
     case 'INCREASE_COUNTER':
-      return { counter: state.counter + 1 };
+      return { 
+        counter: state.counter + 1,
+        recipes: state.recipes
+      };
+
     case 'DECREASE_COUNTER':
-      return { counter: state.counter - 1 };
+      return { 
+        counter: state.counter - 1,
+        recipes: state.recipes
+      };
+    
+    case 'ADD_RECIPE':
+      for (i=0; i<state.recipes.length; i++) {
+        newRecipes.push(state.recipes[i])
+      }
+      newRecipes.push(action.recipeName)
+      return { 
+        counter: state.counter,
+        recipes: newRecipes
+      };
+
+    case 'REMOVE_LAST_RECIPE':
+      for (i=0; i<state.recipes.length-1; i++) {
+        newRecipes.push(state.recipes[i])
+      }
+      return { 
+        counter: state.counter,
+        recipes: newRecipes
+      };
+    
+    case 'REMOVE_FIRST_RECIPE':
+      for (i=1; i<state.recipes.length; i++) {
+        newRecipes.push(state.recipes[i])
+      }
+      return { 
+        counter: state.counter,
+        recipes: newRecipes
+      };
+
+    case 'REMOVE_RECIPE':
+      for (i=0; i<state.recipes.length; i++) {
+        if (state.recipes[i].recipeName !== action.recipeName){
+          newRecipes.push(state.recipes[i])
+        }
+      }
+      return { 
+        counter: state.counter,
+        recipes: newRecipes
+      };
+    
+    default:
+      return state
   }
-  return state;
 };
 
 const store = createStore(reducer);
