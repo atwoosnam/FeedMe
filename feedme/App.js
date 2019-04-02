@@ -19,7 +19,7 @@ import ShoppingListScreen from './components/ShoppingListScreen';
 
 const initialState = {
   counter: 0,
-  recipes: ["Gruel"],
+  recipes: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -85,9 +85,9 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer);
 
 const TabNavigator = createBottomTabNavigator({
-  Recipes: RecipeListScreen,
+  // Recipes: RecipeListScreen,
+  'Recipes': PlaygroundScreen,
   'Shopping List': ShoppingListScreen,
-  ':)': PlaygroundScreen,
 });
 
 const AppContainer = createAppContainer(TabNavigator);

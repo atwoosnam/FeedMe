@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from 'react-native';
 import { connect } from 'react-redux';
 import Modal from './Modal'
@@ -14,7 +15,7 @@ class PlaygroundScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ flexDirection: 'row', width:200, justifyContent: 'space-around' }}>
+        {/* <View style={{ flexDirection: 'row', width:200, justifyContent: 'space-around' }}>
             <TouchableOpacity onPress={() => this.props.increaseCounter()}>
                 <Text style={{ fontSize: 20 }}>+</Text>
             </TouchableOpacity>
@@ -22,9 +23,22 @@ class PlaygroundScreen extends Component {
             <TouchableOpacity onPress={() => this.props.decreaseCounter()}>
                 <Text style={{ fontSize: 20 }}>-</Text>
             </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
           <Text>{this.props.recipes}</Text>
+          {/* <FlatList
+            data={this.props.recipes}
+            renderItem={({ item }) => {
+              console.log(this.props.recipes)
+              return (
+                <View>
+                  <Text>•</Text>
+                  <Text>{item.recipeName}</Text>
+                </View>
+              );
+            }}
+            keyExtractor={item => item._id}
+          /> */}
         </View>
         <Modal></Modal>
     </View>

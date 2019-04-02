@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Modal, Text, TouchableHighlight, View, Alert} from 'react-native';
-import RecipeListScreen from './RecipeListScreen'
+import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
+import RecipeList from './RecipeList'
 
 export default class ModalExample extends Component {
   state = {
@@ -27,9 +27,9 @@ export default class ModalExample extends Component {
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>
-                <Text style={{margin:20}}>Hide Modal</Text>
+                <Text style={{fontSize:32, margin:20, alignSelf:'flex-end'}}>✖︎</Text>
               </TouchableHighlight>
-              <RecipeListScreen></RecipeListScreen>
+              <RecipeList/>
             </View>
           </View>
         </Modal>
@@ -38,9 +38,10 @@ export default class ModalExample extends Component {
           onPress={() => {
             this.setModalVisible(true);
           }}>
-          <Text>Show Modal</Text>
+          <Text>Select Recipes</Text>
         </TouchableHighlight>
       </View>
     );
   }
 }
+

@@ -54,8 +54,6 @@ export default class ShoppingList extends Component {
           newStateList.push({ description: description, key:idx.toString() });
         }
 
-        console.log(newStateList)
-
         this.setState({
           ingredients: newStateList,
         });
