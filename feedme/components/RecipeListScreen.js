@@ -10,21 +10,10 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import RecipeListItem from './RecipeListItem'
+import RecipeList from './RecipeList'
+
 
 class RecipeListScreen extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: null,
-    };
-  }
-
-  componentDidMount() {
-    fetch('http://3.91.232.241:3000/recipes')
-      .then(response => response.json())
-      .then(data => this.setState({ data }));
-  }
 
   render() {
     return (
@@ -33,18 +22,7 @@ class RecipeListScreen extends Component {
           <Text style={styles.headerText}>Recipes</Text>
         </View>
         <View style={{ borderBottomColor: 'black', borderBottomWidth: 1 }} />
-        <FlatList
-          data={this.state.data}
-          renderItem={({ item, index, nav }) => {
-            return (
-              <RecipeListItem
-                item={item}
-                index={index}
-                nav={this.props.navigation}
-              />
-            );
-          }}
-        />
+        <RecipeList />
       </View>
     );
   }
@@ -83,4 +61,9 @@ const styles = StyleSheet.create({
     fontFamily: 'AmericanTypewriter',
   },
 
+  listContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
 });

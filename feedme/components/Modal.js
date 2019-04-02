@@ -27,7 +27,7 @@ export default class ModalExample extends Component {
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>
-                <Text>Hide Modal</Text>
+                <Text style={{margin:20}}>Hide Modal</Text>
               </TouchableHighlight>
               <RecipeListScreen></RecipeListScreen>
             </View>
