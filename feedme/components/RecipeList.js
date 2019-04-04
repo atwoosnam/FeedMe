@@ -21,7 +21,7 @@ export default class RecipeList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://3.91.232.241:3000/recipes')
+    fetch('http://3.91.232.241:3000/recipes.json')
       .then(response => response.json())
       .then(data => this.setState({ data }));
   }

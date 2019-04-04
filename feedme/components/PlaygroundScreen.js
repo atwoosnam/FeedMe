@@ -14,37 +14,35 @@ class PlaygroundScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {/* <View style={{ flexDirection: 'row', width:200, justifyContent: 'space-around' }}>
-            <TouchableOpacity onPress={() => this.props.increaseCounter()}>
-                <Text style={{ fontSize: 20 }}>+</Text>
-            </TouchableOpacity>
-            <Text style={{ fontSize: 20 }}>{this.props.counter}</Text>
-            <TouchableOpacity onPress={() => this.props.decreaseCounter()}>
-                <Text style={{ fontSize: 20 }}>-</Text>
-            </TouchableOpacity>
-        </View> */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Text>{this.props.recipes}</Text>
-          {/* <FlatList
-            data={this.props.recipes}
-            renderItem={({ item }) => {
-              console.log(this.props.recipes)
-              return (
-                <View>
-                  <Text>•</Text>
-                  <Text>{item.recipeName}</Text>
-                </View>
-              );
-            }}
-            keyExtractor={item => item._id}
-          /> */}
+      <View>
+        <View style={styles.buttonRow}>
+          <Modal style={styles.addButton} openButtonText="ADD" />
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={styles.clearButton}
+            onPress={() => {
+              this.props.clearRecipes()
+            }}>
+            <Text>CLEAR</Text>
+          </TouchableOpacity>
+
         </View>
-        <Modal></Modal>
-    </View>
+        <View style={styles.listContainer}>
+          <FlatList
+            data={this.props.recipes}
+            renderItem={({ item }) => (
+              <Text style={styles.item}>{item.key}</Text>
+            )}
+          />
+        </View>
+      </View>
     )
   }
 }
+
+
+
 
 function mapStateToProps(state) {
   return {
@@ -55,17 +53,46 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
-    decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
+    clearRecipes: () => dispatch({ type: 'CLEAR_RECIPES' }),
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaygroundScreen)
 
 const styles = StyleSheet.create({
- container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center'
+  listContainer: {
+    borderColor: 'red',
+    borderWidth: 3,
+    padding: 5,
+    marginTop: 0,
+    margin: 20,
+  },
+  item: {
+    // flexDirection: 'row',
+    padding: 10,
+    fontSize: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: 'yellow',
+    borderWidth: 3,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 20
+  },
+  addButton: {
+    padding: 10,
+    margin: 20,
+    alignItems: 'center',
+    backgroundColor: '#00cc66',
+    borderRadius: 20
+  },
+  clearButton: {
+    padding: 10,
+    margin: 20,
+    alignItems: 'center',
+    backgroundColor: '#99ddff',
+    borderRadius: 20
   },
 });

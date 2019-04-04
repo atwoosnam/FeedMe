@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { Modal, Text, TouchableOpacity, View, Alert } from 'react-native';
 import RecipeList from './RecipeList'
 
 export default class ModalExample extends Component {
@@ -8,12 +8,12 @@ export default class ModalExample extends Component {
   };
 
   setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+    this.setState({ modalVisible: visible });
   }
 
   render() {
     return (
-      <View style={{marginTop: 22}}>
+      <View>
         <Modal
           animationType="slide"
           transparent={false}
@@ -21,27 +21,29 @@ export default class ModalExample extends Component {
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
           }}>
-          <View style={{marginTop: 22}}>
+          <View>
             <View>
-              <TouchableHighlight
+              <TouchableOpacity
+                activeOpacity={0.7}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>
-                <Text style={{fontSize:32, margin:20, alignSelf:'flex-end'}}>✖︎</Text>
-              </TouchableHighlight>
-              <RecipeList/>
+                <Text style={{ fontSize: 32, margin: 20, alignSelf: 'flex-end' }}>✖︎</Text>
+              </TouchableOpacity>
+              <RecipeList />
             </View>
           </View>
         </Modal>
 
-        <TouchableHighlight
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={this.props.style}
           onPress={() => {
             this.setModalVisible(true);
           }}>
-          <Text>Select Recipes</Text>
-        </TouchableHighlight>
+          <Text>{this.props.openButtonText}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
-

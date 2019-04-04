@@ -24,59 +24,65 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   var newRecipes = []
-  var i=0;
+  var i = 0;
   switch (action.type) {
     case 'INCREASE_COUNTER':
-      return { 
+      return {
         counter: state.counter + 1,
         recipes: state.recipes
       };
 
     case 'DECREASE_COUNTER':
-      return { 
+      return {
         counter: state.counter - 1,
         recipes: state.recipes
       };
-    
+
     case 'ADD_RECIPE':
-      for (i=0; i<state.recipes.length; i++) {
+      for (i = 0; i < state.recipes.length; i++) {
         newRecipes.push(state.recipes[i])
       }
-      newRecipes.push(action.recipeName)
-      return { 
+      newRecipes.push({ key: action.recipeName })
+      return {
         counter: state.counter,
         recipes: newRecipes
       };
 
     case 'REMOVE_LAST_RECIPE':
-      for (i=0; i<state.recipes.length-1; i++) {
+      for (i = 0; i < state.recipes.length - 1; i++) {
         newRecipes.push(state.recipes[i])
       }
-      return { 
+      return {
         counter: state.counter,
         recipes: newRecipes
       };
-    
+
     case 'REMOVE_FIRST_RECIPE':
-      for (i=1; i<state.recipes.length; i++) {
+      for (i = 1; i < state.recipes.length; i++) {
         newRecipes.push(state.recipes[i])
       }
-      return { 
+      return {
         counter: state.counter,
         recipes: newRecipes
       };
 
     case 'REMOVE_RECIPE':
-      for (i=0; i<state.recipes.length; i++) {
-        if (state.recipes[i].recipeName !== action.recipeName){
+      for (i = 0; i < state.recipes.length; i++) {
+        if (state.recipes[i].recipeName !== action.recipeName) {
           newRecipes.push(state.recipes[i])
         }
       }
-      return { 
+      return {
         counter: state.counter,
         recipes: newRecipes
       };
-    
+
+    case 'CLEAR_RECIPES':
+      return {
+        counter: state.counter,
+        recipes: []
+      }
+
     default:
       return state
   }
