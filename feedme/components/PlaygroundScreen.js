@@ -13,8 +13,19 @@ import Modal from './Modal'
 class PlaygroundScreen extends Component {
 
   render() {
+    var screenBody;
+    if (this.props.recipes.length == 0) screenBody =
+      <View style={{ alignContent: "center", justifyContent: "center" }}>
+        <Text style={{ textAlign: "center" }}>No Recipes Selected!</Text>
+      </View>
+    else screenBody = <FlatList
+      data={this.props.recipes}
+      renderItem={({ item }) => (
+        <Text style={styles.item}>{item.key}</Text>
+      )}
+    />;
     return (
-      <View style={{flex:1}}>
+      <View style={{ flex: 1 }}>
         <View style={styles.buttonRow}>
           <Modal style={styles.addButton} openButtonText="ADD" />
 
@@ -23,18 +34,14 @@ class PlaygroundScreen extends Component {
             style={styles.clearButton}
             onPress={() => {
               this.props.clearRecipes()
+              this.props.state = { empty: true }
             }}>
             <Text>CLEAR</Text>
           </TouchableOpacity>
 
         </View>
         <View style={styles.listContainer}>
-          <FlatList
-            data={this.props.recipes}
-            renderItem={({ item }) => (
-              <Text style={styles.item}>{item.key}</Text>
-            )}
-          />
+          {screenBody}
         </View>
       </View>
     )
@@ -68,6 +75,7 @@ const styles = StyleSheet.create({
     padding: 5,
     marginLeft: 20,
     marginRight: 20,
+    justifyContent: "center"
   },
   item: {
     padding: 10,
@@ -81,7 +89,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginTop: 20,
-    borderBottomWidth: 1 
+    borderBottomWidth: 1
   },
   addButton: {
     padding: 10,
