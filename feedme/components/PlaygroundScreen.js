@@ -14,7 +14,7 @@ class PlaygroundScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{flex:1}}>
         <View style={styles.buttonRow}>
           <Modal style={styles.addButton} openButtonText="ADD" />
 
@@ -61,25 +61,27 @@ export default connect(mapStateToProps, mapDispatchToProps)(PlaygroundScreen)
 
 const styles = StyleSheet.create({
   listContainer: {
-    borderColor: 'red',
-    borderWidth: 3,
+    flex: 1,
+    flexDirection: 'column',
+    // borderColor: 'red',
+    // borderWidth: 3,
     padding: 5,
-    marginTop: 0,
-    margin: 20,
+    marginLeft: 20,
+    marginRight: 20,
   },
   item: {
-    // flexDirection: 'row',
     padding: 10,
     fontSize: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: 'yellow',
-    borderWidth: 3,
+    // borderColor: 'yellow',
+    // borderWidth: 3,
   },
   buttonRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginTop: 20
+    marginTop: 20,
+    borderBottomWidth: 1 
   },
   addButton: {
     padding: 10,
