@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     // borderColor:
     //   'yellow',
     flexDirection: "row",
-    padding: 20
+    padding: 15,
+    marginTop: 15
   },
   modalPopUpTopRight: {
     // borderWidth: 5,
