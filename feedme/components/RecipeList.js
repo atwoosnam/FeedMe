@@ -9,9 +9,10 @@ import {
   Button,
 } from 'react-native';
 import RecipeListItem from './RecipeListItem'
+import { connect } from 'react-redux';
 
 
-export default class RecipeList extends Component {
+class RecipeList extends Component {
   constructor(props) {
     super(props);
 
@@ -36,6 +37,9 @@ export default class RecipeList extends Component {
               item={item}
               index={index}
               nav={this.props.navigation}
+              itemPressAction = {() => {
+                this.props.addRecipe(item._id, item.recipeName, item.imageURL)
+              } }
             />
           );
         }}
@@ -44,3 +48,23 @@ export default class RecipeList extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    counter: state.counter,
+    recipes: state.recipes,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addRecipe: (key, recipeName, imageURL) => dispatch({ type: 'ADD_RECIPE', key: key, recipeName: recipeName, imageURL: imageURL }),
+    increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
+    decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RecipeList);

@@ -19,7 +19,13 @@ import ShoppingListScreen from './components/ShoppingListScreen';
 
 const initialState = {
   counter: 0,
-  recipes: [],
+  recipes: [
+    {
+      "key": "0",
+      "recipeName": "Gruel",
+      "imageURL": 'https://upload.wikimedia.org/wikipedia/commons/b/be/Rice_gruel.jpg'
+    }
+  ],
 };
 
 const reducer = (state = initialState, action) => {
@@ -42,7 +48,7 @@ const reducer = (state = initialState, action) => {
       for (i = 0; i < state.recipes.length; i++) {
         newRecipes.push(state.recipes[i])
       }
-      newRecipes.push({ key: action.recipeName })
+      newRecipes.push({ key: action.key, recipeName: action.recipeName, imageURL: action.imageURL })
       return {
         counter: state.counter,
         recipes: newRecipes

@@ -1,4 +1,5 @@
 import Swipeout from 'react-native-swipeout';
+import { SafeAreaView } from 'react-navigation'
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -9,6 +10,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import Modal from './Modal'
+import RecipeList from './RecipeList';
+import RecipeListItem from './RecipeListItem';
 
 class PlaygroundScreen extends Component {
 
@@ -20,13 +23,25 @@ class PlaygroundScreen extends Component {
       </View>
     else screenBody = <FlatList
       data={this.props.recipes}
-      renderItem={({ item }) => (
-        <Text style={styles.item}>{item.key}</Text>
-      )}
-    />;
+      renderItem={({ item, index, nav }) => {
+        return (
+          <RecipeListItem
+            item={item}
+            index={index}
+            nav={this.props.navigation}
+            itemPressAction={() => {
+              console.log("I'm a recipe list item: ", item.recipeName)
+            }}
+          />
+        );
+      }}
+      keyExtractor={item => item.key}
+    />
+
     return (
-      <View style={{ flex: 1 }}>
-        <View style={styles.buttonRow}>
+      <SafeAreaView style={styles.rootContainer}>
+        <View style={styles.headerContainer}>
+
           <Modal style={styles.addButton} openButtonText="ADD" />
 
           <TouchableOpacity
@@ -40,10 +55,10 @@ class PlaygroundScreen extends Component {
           </TouchableOpacity>
 
         </View>
-        <View style={styles.listContainer}>
+        <View style={styles.bodyContainer}>
           {screenBody}
         </View>
-      </View>
+      </SafeAreaView>
     )
   }
 }
@@ -67,11 +82,22 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(PlaygroundScreen)
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    flex: 1,
+  },
+  headerContainer: {
+    flex: 2,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  bodyContainer: {
+    flex: 11,
+    justifyContent: "center"
+  },
   listContainer: {
     flex: 1,
     flexDirection: 'column',
-    // borderColor: 'red',
-    // borderWidth: 3,
     padding: 5,
     marginLeft: 20,
     marginRight: 20,
@@ -82,8 +108,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    // borderColor: 'yellow',
-    // borderWidth: 3,
   },
   buttonRow: {
     flexDirection: 'row',

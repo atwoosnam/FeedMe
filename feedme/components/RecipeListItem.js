@@ -20,8 +20,8 @@ class RecipeListItem extends Component {
   render() {
     const swipeSettings = {
       autoClose: true,
-      onClose: (secId, rowId, direction) => {},
-      onOpen: (secId, rowId, direction) => {},
+      onClose: (secId, rowId, direction) => { },
+      onOpen: (secId, rowId, direction) => { },
       right: [
         {
           onPress: () => {},
@@ -41,9 +41,8 @@ class RecipeListItem extends Component {
             <TouchableOpacity
               style={{ flex: 1, flexDirection: 'column', height: 100 }}
               activeOpacity={0.7}
-              onPress={() => {
-                this.props.addRecipe(this.props.item.recipeName)
-              }}>
+              onPress={this.props.itemPressAction}
+            >
               <ImageBackground
                 source={{ uri: this.props.item.imageURL }}
                 style={styles.imageBG}>
@@ -70,9 +69,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addRecipe: (recipeName) => dispatch({ type: 'ADD_RECIPE', recipeName: recipeName }),
-    increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
-    decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
   };
 }
 

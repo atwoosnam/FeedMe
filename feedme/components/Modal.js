@@ -59,26 +59,17 @@ export default class ModalExample extends Component {
 const styles = StyleSheet.create({
   modalPopUpContainer: {
     flex: 1,
-    // borderColor: "red",
-    // borderWidth: 10
   },
   modalPopUpHeader: {
-    // borderWidth: 5,
-    // borderColor:
-    //   'yellow',
     flexDirection: "row",
     padding: 15,
     marginTop: 15
   },
   modalPopUpTopRight: {
-    // borderWidth: 5,
-    // borderColor: "blue",
     flex: 1
   },
   modalPopUpTopLeft: {
     flex: 4,
-    // borderWidth: 5,
-    // borderColor: "cyan",
     justifyContent: "flex-end",
     alignItems: "flex-start"
   },
@@ -91,7 +82,5 @@ const styles = StyleSheet.create({
   },
   modalPopUpBody: {
     flex: 1,
-    // borderColor: "orange",
-    // borderWidth: 5,
   }
 })
