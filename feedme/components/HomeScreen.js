@@ -12,8 +12,9 @@ import { connect } from 'react-redux';
 import Modal from './Modal'
 import RecipeList from './RecipeList';
 import RecipeListItem from './RecipeListItem';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-class PlaygroundScreen extends Component {
+class HomeScreen extends Component {
 
   render() {
     var screenBody;
@@ -65,7 +66,6 @@ class PlaygroundScreen extends Component {
 
 
 
-
 function mapStateToProps(state) {
   return {
     counter: state.counter,
@@ -79,7 +79,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaygroundScreen)
+// export default connect(mapStateToProps, mapDispatchToProps)(navContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
 
 const styles = StyleSheet.create({
   rootContainer: {

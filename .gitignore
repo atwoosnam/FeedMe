@@ -25,3 +25,5 @@ feedme/node_modules/
 *.rar
 *.tar
 *.zip
+feedme/.exprc
+feedme/.expo/packager-info.json

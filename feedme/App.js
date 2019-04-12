@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
-import PlaygroundScreen from './components/PlaygroundScreen';
-import RecipeListScreen from './components/RecipeListScreen';
+import HomeScreen from './components/HomeScreen';
 import ShoppingListScreen from './components/ShoppingListScreen';
+import TabNavigator from './components/TabNavigator';
 
 /**
  * === REDUX ===
@@ -95,12 +95,6 @@ const reducer = (state = initialState, action) => {
 };
 
 const store = createStore(reducer);
-
-const TabNavigator = createBottomTabNavigator({
-  // Recipes: RecipeListScreen,
-  'Recipes': PlaygroundScreen,
-  'Shopping List': ShoppingListScreen,
-});
 
 const AppContainer = createAppContainer(TabNavigator);
 
