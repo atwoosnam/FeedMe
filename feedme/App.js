@@ -48,9 +48,10 @@ const reducer = (state = initialState, action) => {
       for (i = 0; i < state.recipes.length; i++) {
         newRecipes.push(state.recipes[i])
       }
-      newRecipes.push({ key: action.key, recipeName: action.recipeName, imageURL: action.imageURL })
+      const nextIdx = state.counter + 1
+      newRecipes.push({ key: String(nextIdx), recipeName: action.recipeName, imageURL: action.imageURL })
       return {
-        counter: state.counter,
+        counter: nextIdx,
         recipes: newRecipes
       };
 
@@ -74,7 +75,7 @@ const reducer = (state = initialState, action) => {
 
     case 'REMOVE_RECIPE':
       for (i = 0; i < state.recipes.length; i++) {
-        if (state.recipes[i].recipeName !== action.recipeName) {
+        if (state.recipes[i].key !== action.key) {
           newRecipes.push(state.recipes[i])
         }
       }
@@ -85,7 +86,7 @@ const reducer = (state = initialState, action) => {
 
     case 'CLEAR_RECIPES':
       return {
-        counter: state.counter,
+        counter: 0,
         recipes: []
       }
 

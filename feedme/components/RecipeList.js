@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   FlatList,
-  Text,
-  View,
-  ImageBackground,
-  TouchableOpacity,
-  Button,
 } from 'react-native';
 import RecipeListItem from './RecipeListItem'
 import { connect } from 'react-redux';
@@ -38,7 +32,7 @@ class RecipeList extends Component {
               index={index}
               nav={this.props.navigation}
               itemPressAction = {() => {
-                this.props.addRecipe(item._id, item.recipeName, item.imageURL)
+                this.props.addRecipe(item.recipeName, item.imageURL)
               } }
             />
           );
@@ -58,9 +52,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addRecipe: (key, recipeName, imageURL) => dispatch({ type: 'ADD_RECIPE', key: key, recipeName: recipeName, imageURL: imageURL }),
-    increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
-    decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
+    addRecipe: (recipeName, imageURL) => dispatch({ type: 'ADD_RECIPE', recipeName: recipeName, imageURL: imageURL }),
   };
 }
 
