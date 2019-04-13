@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import RecipeList from '../components/RecipeList'
+import RecipeSelectionList from '../components/RecipeSelectionList'
 
 export default class RecipeSelectionScreen extends Component {
   static navigationOptions = {
@@ -10,7 +10,7 @@ export default class RecipeSelectionScreen extends Component {
     return (
       <View style={styles.rootContainer}>
         <View style={styles.body}>
-          <RecipeList />
+          <RecipeSelectionList />
         </View>
       </View>
     )

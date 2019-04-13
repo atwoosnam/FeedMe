@@ -6,7 +6,7 @@ import RecipeListItem from './RecipeListItem'
 import { connect } from 'react-redux';
 
 
-class RecipeList extends Component {
+class RecipeSelectionList extends Component {
   constructor(props) {
     super(props);
 
@@ -59,4 +59,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RecipeList);
+)(RecipeSelectionList);
