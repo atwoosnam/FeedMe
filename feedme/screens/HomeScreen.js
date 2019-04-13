@@ -50,6 +50,8 @@ class HomeScreen extends Component {
             }}
           />
 
+          <Text style={styles.headerText}>Upcoming Recipes</Text>
+
           <Button title="Add"
             onPress={() => this.props.navigation.navigate('RecipeSelectionScreen')}
           />
@@ -87,14 +89,19 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 2,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center"
   },
   headerButton: {
-    padding: 20
+
   },
   bodyContainer: {
     flex: 11,
     justifyContent: "center"
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: "500",
+    fontFamily: 'AmericanTypewriter',
   },
 });
