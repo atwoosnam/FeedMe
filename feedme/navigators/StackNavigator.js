@@ -1,6 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
 import HomeScreen from '../screens/HomeScreen'
 import RecipeSelectionScreen from '../screens/RecipeSelectionScreen'
+import RecipeDetailScreen from '../screens/RecipeDetailScreen'
 
 export default createStackNavigator({
   Home: {
@@ -9,5 +10,6 @@ export default createStackNavigator({
   RecipeSelectionScreen: {
     screen: RecipeSelectionScreen
   },
+  RecipeDetailScreen: RecipeDetailScreen
 
 })

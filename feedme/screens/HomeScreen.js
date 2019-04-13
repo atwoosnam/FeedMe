@@ -30,7 +30,7 @@ class HomeScreen extends Component {
             index={index}
             nav={this.props.navigation}
             itemPressAction={() => {
-              console.log("I'm a recipe list item: ", item.recipeName)
+              this.props.navigation.navigate('RecipeDetailScreen')
             }}
           />
         );
