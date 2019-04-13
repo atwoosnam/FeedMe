@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
-import HomeScreen from './screens/HomeScreen';
-import ShoppingListScreen from './screens/ShoppingListScreen';
+import { createAppContainer } from 'react-navigation';
 import TabNavigator from './navigators/TabNavigator';
 
 /**
@@ -32,17 +30,6 @@ const reducer = (state = initialState, action) => {
   var newRecipes = []
   var i = 0;
   switch (action.type) {
-    case 'INCREASE_COUNTER':
-      return {
-        counter: state.counter + 1,
-        recipes: state.recipes
-      };
-
-    case 'DECREASE_COUNTER':
-      return {
-        counter: state.counter - 1,
-        recipes: state.recipes
-      };
 
     case 'ADD_RECIPE':
       for (i = 0; i < state.recipes.length; i++) {

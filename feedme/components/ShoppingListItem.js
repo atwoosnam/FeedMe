@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  ImageBackground,
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -62,8 +61,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
-    decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
   };
 }
 

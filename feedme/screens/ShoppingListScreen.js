@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  FlatList,
   Text,
   View,
-  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
-import ShoppingListItem from '../components/ShoppingListItem'
 import ShoppingList from '../components/ShoppingList'
 
 class ShoppingListScreen extends Component {
-
-  // _keyExtractor = (item, index) => item.id;
 
   render() {
     return (
@@ -21,7 +16,7 @@ class ShoppingListScreen extends Component {
           <Text style={styles.headerText}>Shopping List</Text>
         </View>
         <View style={{ borderBottomColor: 'black', borderBottomWidth: 1 }} />
-        <ShoppingList/>
+        <ShoppingList />
       </View>
     );
   }
@@ -35,8 +30,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
-    decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
   };
 }
 
@@ -53,10 +46,8 @@ const styles = StyleSheet.create({
     borderLeftWidth: 16,
     borderRightWidth: 16,
   },
-
   headerText: {
     fontSize: 32,
     fontFamily: 'AmericanTypewriter',
   },
-
 });

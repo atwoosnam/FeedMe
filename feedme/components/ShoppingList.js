@@ -4,7 +4,6 @@ import {
   FlatList,
   Text,
   View,
-  TouchableOpacity,
 } from 'react-native';
 import ShoppingListItem from './ShoppingListItem'
 
