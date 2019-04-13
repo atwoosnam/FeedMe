@@ -9,9 +9,9 @@ import {
   FlatList
 } from 'react-native';
 import { connect } from 'react-redux';
-import Modal from './Modal'
-import RecipeList from './RecipeList';
-import RecipeListItem from './RecipeListItem';
+import Modal from '../components/Modal'
+import RecipeList from '../components/RecipeList';
+import RecipeListItem from '../components/RecipeListItem';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 class HomeScreen extends Component {

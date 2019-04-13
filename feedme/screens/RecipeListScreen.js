@@ -9,8 +9,8 @@ import {
   Button,
 } from 'react-native';
 import { connect } from 'react-redux';
-import RecipeListItem from './RecipeListItem'
-import RecipeList from './RecipeList'
+import RecipeListItem from '../components/RecipeListItem'
+import RecipeList from '../components/RecipeList'
 
 
 class RecipeListScreen extends Component {

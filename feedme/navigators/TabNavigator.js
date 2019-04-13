@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 // import Icon from 'react-native-vector-icons/FontAwesome5';
-import HomeScreen from './HomeScreen';
-import ShoppingListScreen from './ShoppingListScreen';
+import HomeScreen from '../screens/HomeScreen';
+import ShoppingListScreen from '../screens/ShoppingListScreen';
 
 const Tabs = createBottomTabNavigator({
     HomeScreen: {

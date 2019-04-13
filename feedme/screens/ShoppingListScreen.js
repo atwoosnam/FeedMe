@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
-import ShoppingListItem from './ShoppingListItem'
-import ShoppingList from './ShoppingList'
+import ShoppingListItem from '../components/ShoppingListItem'
+import ShoppingList from '../components/ShoppingList'
 
 class ShoppingListScreen extends Component {
 

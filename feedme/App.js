@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
-import HomeScreen from './components/HomeScreen';
-import ShoppingListScreen from './components/ShoppingListScreen';
-import TabNavigator from './components/TabNavigator';
+import HomeScreen from './screens/HomeScreen';
+import ShoppingListScreen from './screens/ShoppingListScreen';
+import TabNavigator from './navigators/TabNavigator';
 
 /**
  * === REDUX ===
