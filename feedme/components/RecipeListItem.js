@@ -24,7 +24,9 @@ class RecipeListItem extends Component {
       onOpen: (secId, rowId, direction) => { },
       right: [
         {
-          onPress: () => {},
+          onPress: () => {
+            this.props.removeRecipe(this.props.index)
+          },
           text: 'Delete',
           type: 'delete',
         },
@@ -69,6 +71,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    removeRecipe: (idx) => dispatch({ type: 'REMOVE_RECIPE', index: idx }),
   };
 }
 

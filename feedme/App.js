@@ -62,12 +62,18 @@ const reducer = (state = initialState, action) => {
 
     case 'REMOVE_RECIPE':
       for (i = 0; i < state.recipes.length; i++) {
-        if (state.recipes[i].key !== action.key) {
-          newRecipes.push(state.recipes[i])
+        var thisRecipe = state.recipes[i]
+        if (Number(thisRecipe.key) < Number(action.index)) {
+          newRecipes.push(thisRecipe)
+        } else if (Number(thisRecipe.key) > Number(action.index)) {
+          var updatedRecipe = thisRecipe
+          updatedRecipe.key = String(Number(thisRecipe.key)-1)
+          newRecipes.push(thisRecipe)
         }
       }
+
       return {
-        counter: state.counter,
+        counter: state.counter - 1,
         recipes: newRecipes
       };
 
