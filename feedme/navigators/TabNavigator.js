@@ -3,10 +3,12 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 // import Icon from 'react-native-vector-icons/FontAwesome5';
 import HomeScreen from '../screens/HomeScreen';
 import ShoppingListScreen from '../screens/ShoppingListScreen';
+import StackNavigator from './StackNavigator';
+
 
 const Tabs = createBottomTabNavigator({
     HomeScreen: {
-        screen: HomeScreen,
+        screen: StackNavigator,
         navigationOptions: {
             title: "Home",
             // tabBarIcon: ({ tintColor }) => (
@@ -17,7 +19,7 @@ const Tabs = createBottomTabNavigator({
             // )
         }
     },
-    RecipeListScreen: {
+    ShoppingListScreen: {
         screen: ShoppingListScreen,
         navigationOptions: {
             tabBarLabel: "Shopping List",

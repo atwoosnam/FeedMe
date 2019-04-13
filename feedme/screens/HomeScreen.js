@@ -6,7 +6,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Button
 } from 'react-native';
 import { connect } from 'react-redux';
 import Modal from '../components/Modal'
@@ -15,6 +16,9 @@ import RecipeListItem from '../components/RecipeListItem';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  }
 
   render() {
     var screenBody;
@@ -43,8 +47,21 @@ class HomeScreen extends Component {
       <SafeAreaView style={styles.rootContainer}>
         <View style={styles.headerContainer}>
 
-          <Modal style={styles.addButton} openButtonText="ADD" />
+          {/* <Modal style={styles.addButton} openButtonText="ADD" /> */}
 
+          <Button title="Clear"
+            style={styles.headerButton}
+            onPress={() => {
+              this.props.clearRecipes()
+              this.props.state = { empty: true }
+            }}
+          />
+
+          <Button title="Add"
+            onPress={() => this.props.navigation.navigate('RecipeSelectionScreen')}
+          />
+
+          {/* 
           <TouchableOpacity
             activeOpacity={0.7}
             style={styles.clearButton}
@@ -53,7 +70,7 @@ class HomeScreen extends Component {
               this.props.state = { empty: true }
             }}>
             <Text>CLEAR</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
         </View>
         <View style={styles.bodyContainer}>
@@ -91,6 +108,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
+  },
+  headerButton: {
+    padding: 20
   },
   bodyContainer: {
     flex: 11,
