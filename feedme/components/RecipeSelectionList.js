@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   FlatList,
 } from 'react-native';
-import RecipeListItem from './RecipeListItem'
+import RecipeSelectionListItem from './RecipeSelectionListItem'
 import { connect } from 'react-redux';
 
 
@@ -27,7 +27,7 @@ class RecipeSelectionList extends Component {
         data={this.state.data}
         renderItem={({ item, index, nav }) => {
           return (
-            <RecipeListItem
+            <RecipeSelectionListItem
               item={item}
               index={index}
               nav={this.props.navigation}
