@@ -21,6 +21,7 @@ export default class RecipeSelectionScreen extends Component {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
+    backgroundColor: 'linen'
   },
   body: {
     flex: 1,

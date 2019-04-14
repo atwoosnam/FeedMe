@@ -85,19 +85,22 @@ export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
+    backgroundColor: 'white'
   },
   headerContainer: {
     flex: 2,
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: 'white'
   },
   headerButton: {
 
   },
   bodyContainer: {
     flex: 11,
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: 'linen'
   },
   headerText: {
     fontSize: 20,

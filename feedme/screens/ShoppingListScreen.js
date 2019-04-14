@@ -11,7 +11,7 @@ class ShoppingListScreen extends Component {
 
   render() {
     return (
-      <View style={{ borderColor: 'transparent', borderBottomWidth: 95 }}>
+      <View style={{ borderColor: 'transparent', borderBottomWidth: 95,  backgroundColor: 'linen' }}>
         <View style={styles.headerSection}>
           <Text style={styles.headerText}>Shopping List</Text>
         </View>

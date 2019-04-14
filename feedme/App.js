@@ -21,7 +21,28 @@ const initialState = {
     {
       "key": "0",
       "recipeName": "Gruel",
-      "imageURL": 'https://upload.wikimedia.org/wikipedia/commons/b/be/Rice_gruel.jpg'
+      "imageURL": 'https://upload.wikimedia.org/wikipedia/commons/b/be/Rice_gruel.jpg',
+      "link": null,
+      "timeInMinutes": 10,
+      "servings": 100,
+      "ingredients": [
+        {
+          "_id": "5c993a98cc6012780fdd67fa",
+          "ingredName": "mush",
+          "amount": 12,
+          "units": "lbs",
+          "adjective": "cold",
+          "notes": null
+        },
+        {
+          "_id": "5c993a98cc6012780fdd67f9",
+          "ingredName": "salt",
+          "amount": null,
+          "units": null,
+          "adjective": null,
+          "notes": null
+        },
+      ],
     }
   ],
 };
@@ -42,24 +63,6 @@ const reducer = (state = initialState, action) => {
         recipes: newRecipes
       };
 
-    case 'REMOVE_LAST_RECIPE':
-      for (i = 0; i < state.recipes.length - 1; i++) {
-        newRecipes.push(state.recipes[i])
-      }
-      return {
-        counter: state.counter,
-        recipes: newRecipes
-      };
-
-    case 'REMOVE_FIRST_RECIPE':
-      for (i = 1; i < state.recipes.length; i++) {
-        newRecipes.push(state.recipes[i])
-      }
-      return {
-        counter: state.counter,
-        recipes: newRecipes
-      };
-
     case 'REMOVE_RECIPE':
       for (i = 0; i < state.recipes.length; i++) {
         var thisRecipe = state.recipes[i]
@@ -67,7 +70,7 @@ const reducer = (state = initialState, action) => {
           newRecipes.push(thisRecipe)
         } else if (Number(thisRecipe.key) > Number(action.index)) {
           var updatedRecipe = thisRecipe
-          updatedRecipe.key = String(Number(thisRecipe.key)-1)
+          updatedRecipe.key = String(Number(thisRecipe.key) - 1)
           newRecipes.push(thisRecipe)
         }
       }
