@@ -23,14 +23,13 @@ class HomeScreen extends Component {
       </View>
     else screenBody = <FlatList
       data={this.props.recipes}
-      renderItem={({ item, index, nav }) => {
+      renderItem={({ item, index }) => {
         return (
           <RecipeListItem
             item={item}
             index={index}
-            nav={this.props.navigation}
             itemPressAction={() => {
-              this.props.navigation.navigate('RecipeDetailScreen')
+              this.props.navigation.navigate('RecipeDetailScreen', { item: item })
             }}
           />
         );
