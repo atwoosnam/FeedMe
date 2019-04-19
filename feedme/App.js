@@ -3,6 +3,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 import TabNavigator from './navigators/TabNavigator';
+import { View, Text } from 'react-native'
+
+import { AppLoading, Font } from 'expo';
+import MaterialIcons from './node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf';
+import FontAwesome from './node_modules/@expo/vector-icons/fonts/FontAwesome.ttf';
 
 /**
  * === REDUX ===
@@ -96,7 +101,31 @@ const store = createStore(reducer);
 const AppContainer = createAppContainer(TabNavigator);
 
 class App extends Component {
+  state = {
+    fontLoaded: false
+  };
+
+  async componentWillMount() {
+    try {
+      await Font.loadAsync({
+        FontAwesome,
+        'Material Icons': MaterialIcons
+      });
+      this.setState({ fontLoaded: true });
+    } catch (error) {
+      console.log('error loading icon fonts', error);
+    }
+  }
+
   render() {
+    if (!this.state.fontLoaded) {
+      return (
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <Text>Loading</Text>
+        </View>
+      );
+    }
+
     return (
       <Provider store={store}>
         <AppContainer />
