@@ -62,7 +62,7 @@ const reducer = (state = initialState, action) => {
         newRecipes.push(state.recipes[i])
       }
       const nextIdx = state.counter + 1
-      newRecipes.push({ key: String(nextIdx), recipeName: action.recipeName, imageURL: action.imageURL })
+      newRecipes.push({ key: String(nextIdx), recipeName: action.recipeName, imageURL: action.imageURL, timeInMinutes: action.timeInMinutes, servings: action.servings })
       return {
         counter: nextIdx,
         recipes: newRecipes

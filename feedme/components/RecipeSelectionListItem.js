@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
   itemCell: {
     flex: 1,
     flexDirection: 'column',
-    marginBottom: 10,
-    marginLeft: 10,
-    marginRight: 10,
+    marginBottom: 5,
+    marginLeft: 5,
+    marginRight: 5,
     backgroundColor: 'white'
   },
   imageBG: {
