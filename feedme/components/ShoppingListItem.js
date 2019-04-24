@@ -44,7 +44,7 @@ class ShoppingListItem extends Component {
                 height: 40,
                 justifyContent: 'center',
               }}>
-              <Text>{this.props.item.description}</Text>
+              <Text>{this.props.item.description + '   x' + this.props.item.repetitions}</Text>
             </TouchableOpacity>
           </View>
         </View>

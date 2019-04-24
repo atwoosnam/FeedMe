@@ -61,13 +61,13 @@ const reducer = (state = initialState, action) => {
 
           newIngredients[ingredient.ingredName] = {
             description: description,
+            repetitions: 1,
             key: ingredient._id
           }
         } else {
-          console.log(`Duplicate ingredient: ${ingredient.ingredName}`)
+          newIngredients[ingredient.ingredName].repetitions += 1
         }
       }
-
       return {
         counter: nextIdx,
         recipes: newRecipes,
