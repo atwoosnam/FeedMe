@@ -11,13 +11,19 @@ import ShoppingList from '../components/ShoppingList'
 class ShoppingListScreen extends Component {
 
   render() {
+    var display = <ShoppingList />
+    if (this.props.recipes.length == 0) {
+      display = <View style={{ alignContent: "center", justifyContent: "center", flex: 1 }}>
+        <Text style={{ textAlign: "center" }}>No Recipes Selected!</Text>
+      </View>
+    }
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: 'beige' }}>
         <View style={styles.headerSection}>
           <Text adjustsFontSizeToFit style={styles.headerText}>Shopping List</Text>
         </View>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-          <ShoppingList />
+          {display}
         </View>
       </SafeAreaView>
 
@@ -27,7 +33,7 @@ class ShoppingListScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter,
+    recipes: state.recipes,
   };
 }
 
