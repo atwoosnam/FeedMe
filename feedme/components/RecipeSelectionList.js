@@ -32,7 +32,7 @@ class RecipeSelectionList extends Component {
               index={index}
               nav={this.props.navigation}
               itemPressAction = {() => {
-                this.props.addRecipe(item.recipeName, item.imageURL, item.timeInMinutes, item.servings)
+                this.props.addRecipe(item)
               } }
             />
           );
@@ -52,12 +52,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addRecipe: (recipeName, imageURL, timeInMinutes, servings) => dispatch({ 
+    addRecipe: (recipeObj) => dispatch({ 
       type: 'ADD_RECIPE', 
-      recipeName: recipeName, 
-      imageURL: imageURL,
-      timeInMinutes: timeInMinutes,
-      servings: servings
+      recipeObj: recipeObj
     }),
   };
 }

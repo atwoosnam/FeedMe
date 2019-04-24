@@ -22,38 +22,13 @@ import FontAwesome from './node_modules/@expo/vector-icons/fonts/FontAwesome.ttf
 
 const initialState = {
   counter: 0,
-  recipes: [
-    {
-      "key": "0",
-      "recipeName": "Gruel",
-      "imageURL": 'https://upload.wikimedia.org/wikipedia/commons/b/be/Rice_gruel.jpg',
-      "link": null,
-      "timeInMinutes": 10,
-      "servings": 100,
-      "ingredients": [
-        {
-          "_id": "5c993a98cc6012780fdd67fa",
-          "ingredName": "mush",
-          "amount": 12,
-          "units": "lbs",
-          "adjective": "cold",
-          "notes": null
-        },
-        {
-          "_id": "5c993a98cc6012780fdd67f9",
-          "ingredName": "salt",
-          "amount": null,
-          "units": null,
-          "adjective": null,
-          "notes": null
-        },
-      ],
-    }
-  ],
+  recipes: [],
+  ingredients: {},
 };
 
 const reducer = (state = initialState, action) => {
   var newRecipes = []
+  var newIngredients = {}
   var i = 0;
   switch (action.type) {
 
@@ -62,10 +37,41 @@ const reducer = (state = initialState, action) => {
         newRecipes.push(state.recipes[i])
       }
       const nextIdx = state.counter + 1
-      newRecipes.push({ key: String(nextIdx), recipeName: action.recipeName, imageURL: action.imageURL, timeInMinutes: action.timeInMinutes, servings: action.servings })
+      newRecipes.push({
+        key: String(nextIdx),
+        recipeName: action.recipeObj.recipeName,
+        imageURL: action.recipeObj.imageURL,
+        timeInMinutes: action.recipeObj.timeInMinutes,
+        servings: action.recipeObj.servings,
+        ingredients: action.recipeObj.ingredients
+      })
+
+      newIngredients = state.ingredients
+      for (i = 0; i < action.recipeObj.ingredients.length; i++) {
+        ingredient = action.recipeObj.ingredients[i]
+        if (!(ingredient.ingredName in state.ingredients)) {
+          var description = '';
+          if (ingredient.amount != null)
+            description += String(ingredient.amount) + ' ';
+          if (ingredient.units != null) description += ingredient.units + ' ';
+          if (ingredient.adjective != null)
+            description += ingredient.adjective + ' ';
+          description += ingredient.ingredName;
+          if (ingredient.notes != null) description += ' ' + ingredient.notes;
+
+          newIngredients[ingredient.ingredName] = {
+            description: description,
+            key: ingredient._id
+          }
+        } else {
+          console.log(`Duplicate ingredient: ${ingredient.ingredName}`)
+        }
+      }
+
       return {
         counter: nextIdx,
-        recipes: newRecipes
+        recipes: newRecipes,
+        ingredients: newIngredients
       };
 
     case 'REMOVE_RECIPE':
@@ -82,13 +88,15 @@ const reducer = (state = initialState, action) => {
 
       return {
         counter: state.counter - 1,
-        recipes: newRecipes
+        recipes: newRecipes,
+        ingredients: state.ingredients
       };
 
     case 'CLEAR_RECIPES':
       return {
         counter: 0,
-        recipes: []
+        recipes: [],
+        ingredients: []
       }
 
     default:
