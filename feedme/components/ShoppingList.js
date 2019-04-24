@@ -50,7 +50,7 @@ export default class ShoppingList extends Component {
           description += ingredient.ingredName;
           if (ingredient.notes != null) description += ' ' + ingredient.notes;
 
-          newStateList.push({ description: description, key:idx.toString() });
+          newStateList.push({ description: description, key: idx.toString() });
         }
 
         this.setState({
@@ -61,8 +61,7 @@ export default class ShoppingList extends Component {
 
   render() {
     return (
-      <View>
-        <Text style={styles.container }>Hi</Text>
+      <View style={{ flex: 1 }}>
         <FlatList
           data={this.state.ingredients}
           keyExtractor={item => item.key}
@@ -84,8 +83,8 @@ export default class ShoppingList extends Component {
 
 const styles = StyleSheet.create({
   container: {
-       flex: 1,
-       alignItems: 'center',
-       justifyContent: 'center'
-   },
- });
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+});

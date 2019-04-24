@@ -4,6 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-navigation'
 import { connect } from 'react-redux';
 import ShoppingList from '../components/ShoppingList'
 
@@ -11,13 +12,15 @@ class ShoppingListScreen extends Component {
 
   render() {
     return (
-      <View style={{ borderColor: 'transparent', borderBottomWidth: 95,  backgroundColor: 'linen' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: 'beige' }}>
         <View style={styles.headerSection}>
-          <Text style={styles.headerText}>Shopping List</Text>
+          <Text adjustsFontSizeToFit style={styles.headerText}>Shopping List</Text>
         </View>
-        <View style={{ borderBottomColor: 'black', borderBottomWidth: 1 }} />
-        <ShoppingList />
-      </View>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
+          <ShoppingList />
+        </View>
+      </SafeAreaView>
+
     );
   }
 }
@@ -40,14 +43,14 @@ export default connect(
 
 const styles = StyleSheet.create({
   headerSection: {
-    borderColor: 'transparent',
-    borderTopWidth: 36,
-    borderBottomWidth: 16,
-    borderLeftWidth: 16,
-    borderRightWidth: 16,
+    height: 70,
+    backgroundColor: 'beige',
+    justifyContent: "center",
+    borderBottomWidth: 1
   },
   headerText: {
-    fontSize: 32,
+    fontSize: 30,
+    paddingLeft: 15,
     fontFamily: 'AmericanTypewriter',
   },
 });
